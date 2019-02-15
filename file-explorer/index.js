@@ -1,6 +1,6 @@
-var fs = require('fs')
-var stdin = process.stdin
-var stdout = process.stdout
+const fs = require('fs')
+const stdin = process.stdin
+const stdout = process.stdout
 
 fs.readdir(process.cwd(), function(err, files) {
   console.log('')
@@ -11,9 +11,9 @@ fs.readdir(process.cwd(), function(err, files) {
 
   console.log('   Select which file or directory you want to see\n')
 
-  var stats = []
+  let stats = []
   function file(i) {
-    var filename = files[i]
+    let filename = files[i]
 
     fs.stat(__dirname + '/' + filename, function(err, stat) {
       stats[i] = stat
@@ -40,7 +40,7 @@ fs.readdir(process.cwd(), function(err, files) {
   }
 
   function option(data) {
-    var filename = files[Number(data)]
+    let filename = files[Number(data)]
     if (!filename) {
       stdout.write('    \033[31mEnter your choice: \033[39m')
     } else {
